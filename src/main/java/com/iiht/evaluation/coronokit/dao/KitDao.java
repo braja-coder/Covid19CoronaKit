@@ -6,10 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.iiht.evaluation.coronokit.model.CoronaKit;
 
 
 
@@ -43,5 +39,69 @@ public class KitDao {
 		}
 	}
 
-	// add DAO methods as per requirements
+	
+	public boolean addNewVisitor(String name, String email, String phone) throws ClassNotFoundException, SQLException {
+		String sql = "insert into user (userName,userEmail,phoneNumber) values(?,?,?)";
+		this.connect();
+		
+		PreparedStatement pstmt = this.jdbcConnection.prepareStatement(sql);
+		pstmt.setString(1, name);
+		pstmt.setString(2, email);
+		pstmt.setInt(3, Integer.parseInt(phone));
+		
+		boolean added = pstmt.executeUpdate() > 0;
+		
+		pstmt.close();
+		this.disconnect();
+		return added;
+	}
+	
+	public Integer addCoronakit(String personName, String email, String contactNumber,int totalAmount,String deliveryAddress,String orderDate,boolean orderFinalized) throws ClassNotFoundException, SQLException {
+		
+		String sql = "insert into coronaKit (pPersonName,pEmail,pContactNumber,pTotalAmount,pDeliveryAddress,pOrderDate,pOrderFinalized) values(?,?,?,?,?,?,?)";
+		this.connect();
+		
+		PreparedStatement pstmt = this.jdbcConnection.prepareStatement(sql);
+		pstmt.setString(1, personName);
+		pstmt.setString(2, email);
+		pstmt.setString(3, contactNumber);
+		pstmt.setInt(4, totalAmount);
+		pstmt.setString(5, deliveryAddress);
+		pstmt.setString(6, orderDate);
+		pstmt.setBoolean(7, orderFinalized);
+		
+		boolean added = pstmt.executeUpdate() > 0;
+		
+		sql = "select id from coronaKit";
+		
+		Statement stmt = this.jdbcConnection.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		int coronkitid=0;
+		
+		while(rs.next())  {
+			
+			coronkitid=rs.getInt("id");
+		}
+		pstmt.close();
+		this.disconnect();
+		return coronkitid;
+	}
+	
+	public boolean addKitdetails(int coronaKitId, int productId, int quantity,int amount) throws ClassNotFoundException, SQLException {
+		
+		String sql = "insert into kitdetails (pcoronaKitId,pproductId,pquantity,pamount) values(?,?,?,?)";
+		this.connect();
+		
+		PreparedStatement pstmt = this.jdbcConnection.prepareStatement(sql);
+		pstmt.setInt(1,coronaKitId );
+		pstmt.setInt(2, productId);
+		pstmt.setInt(3, quantity);
+		pstmt.setInt(4, amount);
+		
+		boolean added = pstmt.executeUpdate() > 0;
+		
+		pstmt.close();
+		this.disconnect();
+		return added;
+	}
 }

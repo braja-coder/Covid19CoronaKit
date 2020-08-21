@@ -1,1 +1,2 @@
-<h1>Footer...</h1>
+<h4>Stay Home Stay Safe ! </h4>
+<p>@2020 copyright covid19</p>

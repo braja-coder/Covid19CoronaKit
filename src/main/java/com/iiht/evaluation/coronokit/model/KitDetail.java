@@ -1,23 +1,36 @@
 package com.iiht.evaluation.coronokit.model;
 
-public class KitDetail {
+import java.io.Serializable;
+
+public class KitDetail implements Serializable{
 
 	private int id;
 	private int coronaKitId;
 	private int productId;
 	private int quantity;
 	private int amount;
+	private String pname;
 	
+	
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
 	public KitDetail() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public KitDetail(int id, int coronaKitId, int productId, int quantity, int amount) {
+	public KitDetail(int id, int coronaKitId, int productId, int quantity, int amount,String pname) {
 		this.id = id;
 		this.coronaKitId = coronaKitId;
 		this.productId = productId;
 		this.quantity = quantity;
 		this.amount = amount;
+		this.pname = pname;
 	}
 	public int getId() {
 		return id;

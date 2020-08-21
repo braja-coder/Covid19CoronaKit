@@ -11,7 +11,16 @@ public class ProductMaster {
 	private String productName;
 	private String cost;
 	private String productDescription;
+	private int quantity;
 	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	public ProductMaster() {
 		// TODO Auto-generated constructor stub
 	}

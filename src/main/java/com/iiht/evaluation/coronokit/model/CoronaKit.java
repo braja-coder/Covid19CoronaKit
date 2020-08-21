@@ -1,6 +1,8 @@
 package com.iiht.evaluation.coronokit.model;
 
-public class CoronaKit {
+import java.io.Serializable;
+
+public class CoronaKit implements Serializable{
 	
 	private int id;
 	private String personName;
