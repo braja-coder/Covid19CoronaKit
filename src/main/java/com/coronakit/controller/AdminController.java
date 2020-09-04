@@ -13,16 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.coronakit.dao.ProductMasterDao;
-import com.coronakit.model.ProductMaster;
+import com.coronakit.dao.ProductDao;
+import com.coronakit.model.Product;
 
 @WebServlet("/admin")
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ProductMasterDao productMasterDao;
+	private ProductDao productMasterDao;
 	HttpSession session;
 
-	public void setProductMasterDao(ProductMasterDao productMasterDao) {
+	public void setProductMasterDao(ProductDao productMasterDao) {
 		this.productMasterDao = productMasterDao;
 	}
 
@@ -32,7 +32,7 @@ public class AdminController extends HttpServlet {
 		String jdbcUsername = config.getServletContext().getInitParameter("jdbcUsername");
 		String jdbcPassword = config.getServletContext().getInitParameter("jdbcPassword");
 
-		this.productMasterDao = new ProductMasterDao(jdbcURL, jdbcUsername, jdbcPassword);
+		this.productMasterDao = new ProductDao(jdbcURL, jdbcUsername, jdbcPassword);
 
 	}
 
@@ -91,7 +91,7 @@ public class AdminController extends HttpServlet {
 	private String listAllProducts(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException {
 
-		List<ProductMaster> products = this.productMasterDao.getAllproductRecords();
+		List<Product> products = this.productMasterDao.getAllproductRecords();
 		request.setAttribute("products", products);
 		return "listproducts.jsp";
 	}

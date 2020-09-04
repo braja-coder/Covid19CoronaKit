@@ -6,10 +6,6 @@ public class OrderSummary {
 	private CoronaKit coronaKit;
 	private List<KitDetail> kitDetails;
 	
-	public OrderSummary() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	public OrderSummary(CoronaKit coronaKit, List<KitDetail> kitDetails) {
 		
 		this.coronaKit = coronaKit;

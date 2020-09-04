@@ -20,7 +20,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.coronakit.controller.AdminController;
-import com.coronakit.dao.ProductMasterDao;
+import com.coronakit.dao.ProductDao;
 public class BoundaryTest {
 	private AdminController servlet;
 	@Mock
@@ -47,7 +47,7 @@ public class BoundaryTest {
     @Test
     public void testInvalidDbDetails() throws ServletException, IOException {
     	this.servlet = new AdminController();
-        ProductMasterDao productMasterDao = new ProductMasterDao("", "", "");
+        ProductDao productMasterDao = new ProductDao("", "", "");
         this.servlet.setProductMasterDao(productMasterDao);
     	when(this.request.getParameter("action")).thenReturn("list");
     	when(this.request.getRequestDispatcher("listproducts.jsp")).thenReturn(rd);

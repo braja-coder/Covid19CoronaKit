@@ -13,8 +13,8 @@
 <hr/>
 <h2>Edit Product</h2>
 <%
-		// fetch the shared data
-		ProductMaster products =  (ProductMaster) request.getAttribute("product"); 
+	// fetch the shared data
+		Product products =  (Product) request.getAttribute("product");
 %>
 
 <form action="admin?action=updateproduct" method="post">

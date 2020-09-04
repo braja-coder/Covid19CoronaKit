@@ -21,7 +21,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.coronakit.controller.UserController;
 import com.coronakit.dao.KitDao;
-import com.coronakit.dao.ProductMasterDao;
+import com.coronakit.dao.ProductDao;
 
 public class TestUserController {
 
@@ -41,13 +41,13 @@ public class TestUserController {
 	@Captor
 	ArgumentCaptor<HttpServletResponse> responseCaptor;
 	
-    private ProductMasterDao productMasterDao;
+    private ProductDao productMasterDao;
     private KitDao kitDao;
 
     @Before
     public void setUp() {
         this.servlet = new UserController();
-        productMasterDao = new ProductMasterDao(jdbcURL, jdbcUsername, jdbcPassword);
+        productMasterDao = new ProductDao(jdbcURL, jdbcUsername, jdbcPassword);
         this.servlet.setProductMasterDao(productMasterDao);
         kitDao = new KitDao(jdbcURL, jdbcUsername, jdbcPassword);
         this.servlet.setKitDAO(kitDao);

@@ -22,7 +22,7 @@ import org.mockito.MockitoAnnotations;
 import com.coronakit.controller.AdminController;
 import com.coronakit.controller.UserController;
 import com.coronakit.dao.KitDao;
-import com.coronakit.dao.ProductMasterDao;
+import com.coronakit.dao.ProductDao;
 
 public class ExceptionTest {
 	private UserController userServlet;

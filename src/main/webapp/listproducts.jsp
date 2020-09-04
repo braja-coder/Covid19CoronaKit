@@ -21,7 +21,7 @@
 <br/>
 	<%
 		// fetch the shared data
-		List<ProductMaster> products =  (List<ProductMaster>) request.getAttribute("products");
+			List<Product> products =  (List<Product>) request.getAttribute("products");
 	%>
 	<table border="1" width="100%">
 		<thead>
@@ -32,7 +32,9 @@
 			<th></th>
 		</thead>
 		<tbody>
-			<% for(ProductMaster product : products) { %>
+			<%
+				for(Product product : products) {
+			%>
 			<tr>
 				<td><%=product.getProductName()%></td>
 				<td><%=product.getCost()%></td>

@@ -4,7 +4,7 @@ package com.coronakit.model;
 
 
 
-public class ProductMaster {
+public class Product {
 	
 
 	private int id;
@@ -21,11 +21,11 @@ public class ProductMaster {
 		this.quantity = quantity;
 	}
 
-	public ProductMaster() {
+	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ProductMaster(int id, String productName, String cost, String productDescription) {
+	public Product(int id, String productName, String cost, String productDescription) {
 		super();
 		this.id = id;
 		this.productName = productName;

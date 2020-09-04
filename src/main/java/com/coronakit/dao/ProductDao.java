@@ -9,18 +9,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.coronakit.model.ProductMaster;
+import com.coronakit.model.Product;
 
 
 
-public class ProductMasterDao {
+public class ProductDao {
 
 	private String jdbcURL;
 	private String jdbcUsername;
 	private String jdbcPassword;
 	private Connection jdbcConnection;
 
-	public ProductMasterDao(String jdbcURL, String jdbcUsername, String jdbcPassword) {
+	public ProductDao(String jdbcURL, String jdbcUsername, String jdbcPassword) {
         this.jdbcURL = jdbcURL;
         this.jdbcUsername = jdbcUsername;
         this.jdbcPassword = jdbcPassword;
@@ -60,7 +60,7 @@ public class ProductMasterDao {
 		return added;
 	}
 	
-	public List<ProductMaster> getAllproductRecords() throws ClassNotFoundException, SQLException {
+	public List<Product> getAllproductRecords() throws ClassNotFoundException, SQLException {
 		String sql = "select * from productmaster";
 		this.connect();
 		
@@ -68,9 +68,9 @@ public class ProductMasterDao {
 		ResultSet rs = stmt.executeQuery(sql);
 		
 		// map it to model
-		List<ProductMaster> productlist = new ArrayList<ProductMaster>();
+		List<Product> productlist = new ArrayList<Product>();
 		while(rs.next()) {
-			ProductMaster product = new ProductMaster(rs.getInt("pid"), 
+			Product product = new Product(rs.getInt("pid"), 
 											 rs.getString("pName"), 
 											 rs.getString("pCost"), 
 											 rs.getString("pDescription"));
@@ -84,19 +84,19 @@ public class ProductMasterDao {
 		return productlist;
 	}
 	
-	public ProductMaster getproductRecord(String id) throws ClassNotFoundException, SQLException {
+	public Product getproductRecord(String id) throws ClassNotFoundException, SQLException {
 		
 		String sql = "select * from productmaster where pid="+id;
 		this.connect();
 		
 		Statement stmt = this.jdbcConnection.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
-		ProductMaster product = null;
+		Product product = null;
 		
 		// map it to model
 		while(rs.next()) {
 			
-			 product = new ProductMaster(rs.getInt("pid"), 
+			 product = new Product(rs.getInt("pid"), 
 											 rs.getString("pName"), 
 											 rs.getString("pCost"), 
 											 rs.getString("pDescription"));

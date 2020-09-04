@@ -1,1 +1,1 @@
-<h1 style="text-align:center; background-color: red" >Covid 19 Corona Kit</h1>
+<h1 style="text-align:left; background-color: orange" >Covid 19 Corona Kit</h1>

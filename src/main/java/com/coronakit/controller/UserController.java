@@ -15,24 +15,24 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.coronakit.dao.KitDao;
-import com.coronakit.dao.ProductMasterDao;
+import com.coronakit.dao.ProductDao;
 import com.coronakit.model.CoronaKit;
 import com.coronakit.model.KitDetail;
-import com.coronakit.model.ProductMaster;
+import com.coronakit.model.Product;
 import com.coronakit.model.UserDetails;
 
 @WebServlet("/user")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private KitDao kitDAO;
-	private ProductMasterDao productMasterDao;
+	private ProductDao productMasterDao;
 	List<KitDetail> noOfKits = null;
 
 	public void setKitDAO(KitDao kitDAO) {
 		this.kitDAO = kitDAO;
 	}
 
-	public void setProductMasterDao(ProductMasterDao productMasterDao) {
+	public void setProductMasterDao(ProductDao productMasterDao) {
 		this.productMasterDao = productMasterDao;
 	}
 
@@ -42,7 +42,7 @@ public class UserController extends HttpServlet {
 		String jdbcPassword = config.getServletContext().getInitParameter("jdbcPassword");
 
 		this.kitDAO = new KitDao(jdbcURL, jdbcUsername, jdbcPassword);
-		this.productMasterDao = new ProductMasterDao(jdbcURL, jdbcUsername, jdbcPassword);
+		this.productMasterDao = new ProductDao(jdbcURL, jdbcUsername, jdbcPassword);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -162,13 +162,13 @@ public class UserController extends HttpServlet {
 
 	private String showAllProducts(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException {
-		List<ProductMaster> products = this.productMasterDao.getAllproductRecords();
+		List<Product> products = this.productMasterDao.getAllproductRecords();
 		request.setAttribute("products", products);
 
 		try {
 			List<KitDetail> kitDetails = (List<KitDetail>) request.getSession().getAttribute("selectedKitDetails");
 			if (null != kitDetails) {
-				for (ProductMaster prod : products) {
+				for (Product prod : products) {
 					for (KitDetail kit : kitDetails) {
 						if (kit.getId() == prod.getId()) {
 							prod.setQuantity(kit.getQuantity());

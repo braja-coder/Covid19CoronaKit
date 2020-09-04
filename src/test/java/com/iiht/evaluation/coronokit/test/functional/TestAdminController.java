@@ -24,7 +24,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.coronakit.controller.AdminController;
-import com.coronakit.dao.ProductMasterDao;
+import com.coronakit.dao.ProductDao;
 
 public class TestAdminController {
 	private AdminController servlet;
@@ -43,12 +43,12 @@ public class TestAdminController {
 	@Captor
 	ArgumentCaptor<HttpServletResponse> responseCaptor;
 	
-	private ProductMasterDao productMasterDao;
+	private ProductDao productMasterDao;
 
     @Before
     public void setUp() {
         this.servlet = new AdminController();
-        productMasterDao = new ProductMasterDao(jdbcURL, jdbcUsername, jdbcPassword);
+        productMasterDao = new ProductDao(jdbcURL, jdbcUsername, jdbcPassword);
         this.servlet.setProductMasterDao(productMasterDao);
         MockitoAnnotations.initMocks(this);
     }

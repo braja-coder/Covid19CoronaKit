@@ -17,8 +17,8 @@
 	<form action="user?action=showkit" method="post">
 	<%
 		// fetch the shared data
-		List<ProductMaster> products =  (List<ProductMaster>) request.getAttribute("products");
-	     int ls=products.size();
+			List<Product> products =  (List<Product>) request.getAttribute("products");
+		     int ls=products.size();
 	%>
 	<table border="1" width="100%">
 		<thead>
