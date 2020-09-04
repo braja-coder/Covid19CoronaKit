@@ -1,4 +1,4 @@
-package com.iiht.evaluation.coronokit.model;
+package com.coronakit.model;
 
 import java.util.List;
 

@@ -1,1 +1,1 @@
-<h1 style="text-align:center; background-color: green" > Medical Kit for COVID</h1>
+<h1 style="text-align:center; background-color: red" >Covid 19 Corona Kit</h1>

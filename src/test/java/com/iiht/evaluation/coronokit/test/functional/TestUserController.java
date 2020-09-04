@@ -19,9 +19,9 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.iiht.evaluation.coronokit.controller.UserController;
-import com.iiht.evaluation.coronokit.dao.KitDao;
-import com.iiht.evaluation.coronokit.dao.ProductMasterDao;
+import com.coronakit.controller.UserController;
+import com.coronakit.dao.KitDao;
+import com.coronakit.dao.ProductMasterDao;
 
 public class TestUserController {
 

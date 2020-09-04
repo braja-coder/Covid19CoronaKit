@@ -23,9 +23,8 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
-import com.iiht.evaluation.coronokit.controller.AdminController;
-import com.iiht.evaluation.coronokit.dao.ProductMasterDao;
+import com.coronakit.controller.AdminController;
+import com.coronakit.dao.ProductMasterDao;
 
 public class TestAdminController {
 	private AdminController servlet;
